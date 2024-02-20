@@ -73,26 +73,27 @@
                 <div class="product__list clearfix mt--30">
                     <?php 
                         $get_product = get_product($conn, 'latest', 4);
-                        prx($get_product);
+                        foreach($get_product as $list) { //loop for printing latest products
                     ?>
                     <!-- Start Single Category -->
                     <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
                         <div class="category">
                             <div class="ht__cat__thumb">
                                 <a href="product-details.html">
-                                    <img src="images/product/1.jpg" alt="product images">
+                                    <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$list['image']?>">
                                 </a>
                             </div>
                             
                             <div class="fr__product__inner">
-                                <h4><a href="product-details.html">Largest Water Pot</a></h4>
+                                <h4><a href="product-details.html"><?php echo $list['name']?></a></h4>
                                 <ul class="fr__pro__prize">
-                                    <li class="old__prize">$30.3</li>
-                                    <li>$25.9</li>
+                                    <li class="old__prize">₹ <strike><?php echo $list['mrp']?></strike></li>
+                                    <li>₹ <?php echo $list['price']?></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    <?php }?>
                     <!-- End Single Category -->
                 </div>
             </div>
