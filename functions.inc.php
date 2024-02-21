@@ -19,7 +19,7 @@ function prx($arr) {
 // }
 
 function get_product($conn, $type = '', $limit = '') {
-    $sql =  "SELECT * FROM product";
+    $sql =  "SELECT * FROM product WHERE status = 1";
 
     // contatinating in sql if product type latest
     if($type == 'latest') {

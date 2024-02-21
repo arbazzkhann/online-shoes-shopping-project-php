@@ -1,5 +1,5 @@
 <?php
-    require 'header.inc.php';
+    require 'header.inc.php'; //header
 
 $categories_id = '';
 $name = '';
@@ -14,13 +14,27 @@ $meta_desc = '';
 $meta_keyword = '';
 $msg = '';
 
+$image_required = 'required';
+
+
 if(isset($_GET['id']) && $_GET['id'] != '') {
+    $image_required = '';
     $id = get_safe_value($conn, $_GET['id']);
     $result = mysqli_query($conn, "SELECT * FROM product WHERE id='$id'");
     $check = mysqli_num_rows($result);
     if($check > 0) {
         $row = mysqli_fetch_assoc($result);
-        $categories = $row['categories'];
+        $categories_id = $row['categories_id'];
+        $name = $row['name'];
+        $mrp = $row['mrp'];
+        $price = $row['price'];
+        $qty = $row['qty'];
+        $image = $row['image'];
+        $short_desc = $row['short_desc'];
+        $description = $row['description'];
+        $meta_title = $row['meta_title'];
+        $meta_desc = $row['meta_desc'];
+        $meta_keyword = $row['meta_keyword'];
     }
     else {
         header('location: product.php');
@@ -35,7 +49,6 @@ if(isset($_POST['submit'])) {
     $mrp = get_safe_value($conn, $_POST['mrp']);
     $price = get_safe_value($conn, $_POST['price']);
     $qty = get_safe_value($conn, $_POST['qty']);
-    $image = get_safe_value($conn, $_POST['image']);
     $short_desc = get_safe_value($conn, $_POST['short_desc']);
     $description = get_safe_value($conn, $_POST['description']);
     $meta_title = get_safe_value($conn, $_POST['meta_title']);
@@ -59,14 +72,42 @@ if(isset($_POST['submit'])) {
         }
     }
    
+    // condition if admin select wrong format image
+    if ($_FILES['image']['type'] != '' && 
+    ($_FILES['image']['type'] != 'image/png' && 
+     $_FILES['image']['type'] != 'image/jpg' && 
+     $_FILES['image']['type'] != 'image/jpeg')) {
+        $msg = "Please select image only in png / jpg / jpeg format";
+    }
+
+
+
     if($msg == '') {
         if(isset($_GET['id']) && $_GET['id'] != '') {
-            mysqli_query($conn, "UPDATE categories set categories='$categories' WHERE id=$id");  //applying sql query for inserting categories into database
+            if($_FILES['image']['name'] != '') {
+                $image = rand(111111111, 999999999).'_'.$_FILES['image']['name'];
+                move_uploaded_file($_FILES['image']['tmp_name'],'../media/product/'. $image);
+
+                //if admin wants to change image
+                $update_sql = "UPDATE product set categories_id='$categories_id', name='$name', mrp='$mrp', price='$price', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword', image='$image' WHERE id=$id";
+            }
+            else {
+                //admin dont want to change image
+                $update_sql = "UPDATE product set categories_id='$categories_id', name='$name', mrp='$mrp', price='$price', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword' WHERE id=$id";
+            }
+            mysqli_query($conn, $update_sql);  //applying sql query for updating product
         } 
         else {
-            mysqli_query($conn, "INSERT INTO categories (categories, status) VALUES ('$categories', '1')");  //applying sql query for inserting categories into database
+            //defining image with random number contatination
+            $image = rand(111111111, 999999999).'_'.$_FILES['image']['name'];
+            // saving image to directory
+            move_uploaded_file($_FILES['image']['tmp_name'],'../media/product/'. $image);
+
+            //applying sql query for inserting product into database
+            $inserting_sql = "INSERT INTO product (categories_id, name, mrp, price, qty, short_desc, description, meta_title, meta_desc, meta_keyword, status, image) VALUES ('$categories_id', '$name', '$mrp', '$price', '$qty', '$short_desc', '$description', '$meta_title', '$meta_desc', '$meta_keyword', 1, '$image')";
+            mysqli_query($conn, $inserting_sql);  //applying sql query for inserting product
         }
-        header('location: categories.php');
+        header('location: product.php');
         die();
     }
 }
@@ -82,7 +123,7 @@ if(isset($_POST['submit'])) {
                     <div class="card-header"><strong>Product</strong><small> Form</small></div>
 
                     <!-- form -->
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                     <div class="card-body card-block">
                         <div class="form-group">
                                 <label for="categories" class=" form-control-label">Category</label>
@@ -129,37 +170,37 @@ if(isset($_POST['submit'])) {
                         <!-- Product image -->
                         <div class="form-group">
                                 <label for="image" class="form-control-label">Product Image</label>
-                                <input type="text" name="image" placeholder="Enter product image" class="form-control" required value="<?php echo $image?>">
+                                <input type="file" name="image" placeholder="Enter product image" class="form-control" <?php echo $image_required?>>
                         </div>
 
                         <!-- Short description -->
                         <div class="form-group">
                                 <label for="short_desc" class="form-control-label">Short Description</label>
-                                <textarea name="short_desc" placeholder="Enter short description" class="form-control" required value="<?php echo $short_desc?>"></textarea>
+                                <textarea name="short_desc" placeholder="Enter short description" class="form-control" required><?php echo $short_desc?></textarea>
                         </div>
                     
                         <!-- Description -->
                         <div class="form-group">
                                 <label for="description" class="form-control-label">Description</label>
-                                <textarea name="description" placeholder="Enter description" class="form-control" required value="<?php echo $description?>"></textarea>
+                                <textarea name="description" placeholder="Enter description" class="form-control" required><?php echo $description?></textarea>
                         </div>
                     
                         <!-- Meta title -->
                         <div class="form-group">
                                 <label for="meta_title" class="form-control-label">Meta Title</label>
-                                <input type="text" name="meta_title" placeholder="Enter meta_title" class="form-control" required value="<?php echo $meta_title?>">
+                                <input type="text" name="meta_title" placeholder="Enter meta_title" class="form-control" value="<?php echo $meta_title?>">
                         </div>
                     
                         <!-- Meta description -->
                         <div class="form-group">
                                 <label for="meta_desc" class="form-control-label">Meta Description</label>
-                                <textarea name="meta_desc" placeholder="Enter meta description" class="form-control" required value="<?php echo $meta_desc?>"></textarea>
+                                <textarea name="meta_desc" placeholder="Enter meta description" class="form-control"><?php echo $meta_desc?></textarea>
                         </div>
                     
                         <!-- Meta keyword -->
                         <div class="form-group">
                                 <label for="meta_keyword" class="form-control-label">Meta Keyword</label>
-                                <textarea name="meta_keyword" placeholder="Enter meta keyword" class="form-control" required value="<?php echo $meta_keyword?>"></textarea>
+                                <textarea name="meta_keyword" placeholder="Enter meta keyword" class="form-control"><?php echo $meta_keyword?></textarea>
                         </div>
 
                     

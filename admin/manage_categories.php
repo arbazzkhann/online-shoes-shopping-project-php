@@ -41,7 +41,7 @@ if(isset($_POST['submit'])) {
    
     if($msg == '') {
         if(isset($_GET['id']) && $_GET['id'] != '') {
-            mysqli_query($conn, "UPDATE categories set categories='$categories' WHERE id=$id");  //applying sql query for inserting categories into database
+            mysqli_query($conn, "UPDATE categories set categories='$categories' WHERE id=$id");  //applying sql query for updating categories into database
         } 
         else {
             mysqli_query($conn, "INSERT INTO categories (categories, status) VALUES ('$categories', '1')");  //applying sql query for inserting categories into database
