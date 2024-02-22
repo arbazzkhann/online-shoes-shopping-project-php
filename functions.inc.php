@@ -18,16 +18,22 @@ function prx($arr) {
 //     }
 // }
 
-function get_product($conn, $type = '', $limit = '') {
-    $sql =  "SELECT * FROM product WHERE status = 1";
+function get_product($conn, $limit = '', $cat_id = '', $product_id = '') {
+    $sql =  "SELECT product.*, categories.categories FROM product, categories WHERE product.status = 1";
 
-    // contatinating in sql if product type latest
-    if($type == 'latest') {
-        $sql .= " ORDER BY id DESC";
+    if($cat_id != '') {
+        $sql .= " and product.categories_id = $cat_id";
     }
+
+    if($product_id != '') {
+        $sql .= " and product.id = $product_id";
+    }
+    $sql .= " and product.categories_id = categories.id";
+    $sql .= " ORDER BY product.id DESC";
+
     // contatinating in sql if limit is not NULL
     if($limit != '') {
-        $sql .= " limit $limit";
+        $sql .= " product.limit $limit";
     }
 
     // running query

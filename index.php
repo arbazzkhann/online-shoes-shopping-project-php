@@ -72,23 +72,23 @@
             <div class="row">
                 <div class="product__list clearfix mt--30">
                     <?php 
-                        $get_product = get_product($conn, 'latest', 4);
+                        $get_product = get_product($conn, 4);
                         foreach($get_product as $list) { //loop for printing latest products
                     ?>
                     <!-- Start Single Category -->
                     <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
                         <div class="category">
                             <div class="ht__cat__thumb">
-                                <a href="categories.php?id=<?php echo $list['id']?>">
+                                <a href="product.php?id=<?php echo $list['id']?>">
                                     <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$list['image']?>">
                                 </a>
                             </div>
                             
                             <div class="fr__product__inner">
-                                <h4><a href="product-details.html"><?php echo $list['name']?></a></h4>
+                                <h4><a href="product.php"><?php echo $list['name']?></a></h4>
                                 <ul class="fr__pro__prize">
-                                    <li class="old__prize">₹ <strike><?php echo $list['mrp']?></strike></li>
-                                    <li>₹ <?php echo $list['price']?></li>
+                                    <li class="old__prize">₹ <?php echo $list['mrp']?></li>
+                                    <li>₹<?php echo $list['price']?></li>
                                 </ul>
                             </div>
                         </div>
