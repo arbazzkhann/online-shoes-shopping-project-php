@@ -2,7 +2,16 @@
 <?php 
     require 'header.php'; //Header
     $product_id = mysqli_real_escape_string($conn, $_GET['id']);  // Storing id into variable
-    $get_product = get_product($conn, '', '', $product_id);  //calling getproduct function and storing into variable
+
+    //condition if user put wrong id in url
+    if($product_id > 0 ) {
+        $get_product = get_product($conn, '', '', $product_id);  //calling getproduct function and storing into variable
+    }
+    else { ?>
+        <script>
+            window.location.href = "index.php";
+        </script>   
+    <?php }?>
 ?>
 
 
@@ -56,7 +65,7 @@
                             <li class="old__prize">₹<?php echo $get_product['0']['mrp']?></li>
                             <li>₹<?php echo $get_product['0']['price']?></li>
                         </ul>
-                        <p class="pro__info"><?php echo $get_product['0']['description']?></p>
+                        <p class="pro__info"><?php echo $get_product['0']['short_desc']?></p>
                         <div class="ht__pro__desc">
                             <div class="sin__desc">
                                 <p><span>Availability:</span> In Stock</p>
@@ -64,7 +73,7 @@
                             <div class="sin__desc align--left">
                                 <p><span>Categories:</span></p>
                                 <ul class="pro__cat__list">
-                                    <li><a href="#">Fashion,</a></li>
+                                    <li><a href="categories.php?id=<?php echo $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -85,8 +94,8 @@
             <div class="col-xs-12">
                 <!-- Start List And Grid View -->
                 <ul class="pro__details__tab" role="tablist">
-                    <li role="presentation" class="description active"><a href="#description" role="tab"
-                            data-toggle="tab">description</a></li>
+                    <h2 role="presentation" class="description active"><a href="#description" role="tab"
+                            data-toggle="tab">About <?php echo $get_product['0']['name']?></a></h2>
                 </ul>
                 <!-- End List And Grid View -->
             </div>
@@ -97,35 +106,7 @@
                     <!-- Start Single Content -->
                     <div role="tabpanel" id="description" class="pro__single__content tab-pane fade in active">
                         <div class="pro__tab__content__inner">
-                            <p>Formfitting clothing is all about a sweet spot. That elusive place where an item is tight
-                                but not clingy, sexy but not cloying, cool but not over the top. Alexandra Alvarez’s
-                                label, Alix, hits that mark with its range of comfortable, minimal, and neutral-hued
-                                bodysuits.</p>
-                            <h4 class="ht__pro__title">Description</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                                quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                                consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                                consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
-                                odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait
-                                nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                                doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam;
-                                est usus legentis in iis qui facit eorum claritatem</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                tincidunt ut laoreet dolore magna aliquam erat volutpat. Duis autem vel eum iriure dolor
-                                in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat
-                                nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
-                                luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                            <h4 class="ht__pro__title">Standard Featured</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                                quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                                consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                                consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
-                                odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait
-                                nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet
-                                doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam;
-                                est usus legentis in</p>
+                            <?php echo $get_product['0']['description']?>  <!--Description from database-->
                         </div>
                     </div>
                     <!-- End Single Content -->

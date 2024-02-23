@@ -432,5 +432,53 @@
 })(jQuery);
 
 
+function send_message() {
+    let name = jQuery("#name").val();
+    let email = jQuery("#email").val();
+    let mobile = jQuery("#mobile").val();
+    let message = jQuery("#message").val();
+
+    if(name == '') {
+        alert("Error! - Enter your name");
+    }
+    else if(email == '') {
+        alert("Error! - Enter your email");
+    }
+    else if(mobile == '') {
+        alert("Error! - Enter your mobile number");
+    }
+    else if(message == '') {
+        alert("Error! - Enter your password");
+    }
+    else {
+        // by Video
+        // jQuery.ajax({
+        //     url: 'send_message.php',
+        //     type: 'post',
+        //     data: 'name=' + name + '&email=' + email + '&mobile=' + mobile +  '&message=' + message,
+        //     success: function(result) {
+        //         alert(result);
+        //     }
+        // });
+
+        // by ChatGPT
+        jQuery.ajax({
+            url: 'send_message.php',
+            type: 'post',
+            data: { 
+                name: name,
+                email: email,
+                mobile: mobile,
+                message: message
+            },
+            success: function(result) {
+                alert(result);
+            }
+        });
+        
+    }
+}
+
+
 
 

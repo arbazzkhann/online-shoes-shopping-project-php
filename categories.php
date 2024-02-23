@@ -1,9 +1,17 @@
-<!-- Header -->
 <?php 
     require 'header.php'; //Header
     $cat_id = mysqli_real_escape_string($conn, $_GET['id']);  // Storing id into variable
-    $get_product = get_product($conn, '', $cat_id);  //calling getproduct function and storing into variable
-?>
+
+    //condition if user put negative id in url
+    if($cat_id > 0 ) {
+        $get_product = get_product($conn, '', $cat_id);  //calling getproduct function and storing into variable
+    }
+    else { ?>
+        <script>
+            window.location.href = "index.php";
+        </script>   
+    <?php }?>
+    
 <div class="body__overlay"></div>
 <!-- Start Bradcaump area -->
 <div class="ht__bradcaump__area"
