@@ -431,7 +431,7 @@
 
 })(jQuery);
 
-
+// function for user send_message
 function send_message() {
     let name = jQuery("#name").val();
     let email = jQuery("#email").val();
@@ -480,5 +480,49 @@ function send_message() {
 }
 
 
+// function for user_registeration
+    function user_register() {
+        jQuery('.field_error').html('');
+        let name = jQuery("#name").val();
+        let email = jQuery("#email").val();
+        let mobile = jQuery("#mobile").val();
+        let password = jQuery("#password").val();
+        let is_error = '';
 
-
+        if(name == '') {
+            jQuery('#name_error').html('Please enter your name');
+            is_error = 'yes';
+        }
+        if(email == '') {
+            jQuery('#email_error').html('Please enter your email');
+            is_error = 'yes';
+        }
+        if(mobile == '') {
+            jQuery('#mobile_error').html('Please enter your mobile');
+            is_error = 'yes';
+        }
+        if(password == '') {
+            jQuery('#password_error').html('Please enter your password');
+            is_error = 'yes';
+        }
+        if(is_error == '') {
+            jQuery.ajax({
+                url: 'register_submit.php',
+                type: 'post',
+                data: { 
+                    name: name,
+                    email: email,
+                    mobile: mobile,
+                    password: password
+                },
+                success: function(result) {
+                    if(result == 'email_present') {
+                        jQuery("#email_error").html('Email id alerady exists');
+                    }
+                    if(result == 'insert') {
+                        jQuery("#register_msg p").html('Thank you for registration');
+                    }
+                }
+            });
+        } 
+    }
