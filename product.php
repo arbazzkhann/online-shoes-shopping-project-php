@@ -76,6 +76,7 @@
                                     <li><a href="categories.php?id=<?php echo $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a></li>
                                 </ul>
                             </div>
+                            <a class="fr__btn" href="#">Add to cart</a>
                         </div>
                     </div>
                 </div>
