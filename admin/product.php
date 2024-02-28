@@ -13,7 +13,7 @@
             } else {
                 $status = '0';
             }
-            $sql_update_status = "update product set status='$status' where id='$id'";
+            $sql_update_status = "UPDATE product SET status='$status' WHERE id='$id'";
             mysqli_query($conn, $sql_update_status);
         }
     }
@@ -22,7 +22,7 @@
         if($type == 'delete') {
             $id = get_safe_value($conn, $_GET['id']);
             
-            $sql_delete = "delete from product where id='$id'";
+            $sql_delete = "DELETE FROM product WHERE id='$id'";
             mysqli_query($conn, $sql_delete);
         }
     }
