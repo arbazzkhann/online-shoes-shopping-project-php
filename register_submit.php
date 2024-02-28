@@ -13,6 +13,8 @@ if($check_user > 0) {
     echo "email_present";
 }
 else {
+    $added_on = date("Y-m-d h:i:s");
+    mysqli_query($conn, "INSERT INTO users (name, email, mobile, password, added_on) VALUES ('$name', '$email', '$mobile', '$password', '$added_on')");
     echo "insert";
 }
 

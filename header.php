@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 // including db connection
 require 'connection.inc.php';
 require 'functions.inc.php';
@@ -16,16 +18,16 @@ while($row = mysqli_fetch_assoc($cat_result)) {
 <html class="no-js" lang="en">
 
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Online Shoes Shopping</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
+
 
     <!-- All css files are included here. -->
     <!-- Bootstrap fremwork main css -->
@@ -75,10 +77,13 @@ while($row = mysqli_fetch_assoc($cat_result)) {
 
                                         <!-- printing categories from db -->
                                         <?php
-                                        foreach($cat_arr as $list) { ?>
-                                        <li><a href="categories.php?id=<?php echo $list['id']?>"><?php echo $list['categories']?></a></li>
+                                            foreach($cat_arr as $list) { ?>
+                                        <li>
+                                            <a
+                                                href="categories.php?id=<?php echo $list['id']?>"><?php echo $list['categories']?></a>
+                                        </li>
                                         <?php 
-                                        }
+                                            }
                                         ?>
                                         <li><a href="contact.php">contact</a></li>
                                     </ul>
@@ -89,11 +94,13 @@ while($row = mysqli_fetch_assoc($cat_result)) {
                                     <nav id="mobile_dropdown">
                                         <ul>
                                             <li><a href="index.html">Home</a></li>
-                                        <!-- printing categories from db -->
-                                        <?php
+                                            <!-- printing categories from db -->
+                                            <?php
                                         foreach($cat_arr as $list) { ?>
-                                        <li><a href="categories.php?id=<?php echo $list['id']?>"><?php echo $list['categories']?></a></li>
-                                        <?php 
+                                            <li><a
+                                                    href="categories.php?id=<?php echo $list['id']?>"><?php echo $list['categories']?></a>
+                                            </li>
+                                            <?php 
                                         }
                                         ?>
                                             <li><a href="contact.php">contact</a></li>
@@ -103,11 +110,17 @@ while($row = mysqli_fetch_assoc($cat_result)) {
                             </div>
                             <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
                                 <div class="header__right">
-                                    <!-- <div class="header__search search search__open">
-                                        <a href="#"><i class="icon-magnifier icons"></i></a>
-                                    </div> -->
                                     <div class="header__account">
-                                        <a href="login.php">Login/Register</a>
+                                        <!-- checking user is logged session exists in or not -->
+                                        <?php 
+                                            if(isset($_SESSION['USER_LOGIN'])) {
+                                                echo '<a href="logout.php">Logout</a>';
+                                            } 
+                                            else {
+                                                echo '<a href="login.php">Login/Register</a>';
+                                            }
+                                        ?>
+
                                     </div>
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>

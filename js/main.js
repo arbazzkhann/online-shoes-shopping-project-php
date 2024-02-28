@@ -520,7 +520,44 @@ function send_message() {
                         jQuery("#email_error").html('Email id alerady exists');
                     }
                     if(result == 'insert') {
-                        jQuery("#register_msg p").html('Thank you for registration');
+                        jQuery(".register_msg p").html('Thank you for registration');
+                    }
+                }
+            });
+        } 
+    }
+
+
+// function for user_login
+    function user_login() {
+        jQuery('.field_error').html('');
+        let email = jQuery("#login_email").val();
+        let password = jQuery("#login_password").val();
+        let is_error = '';
+
+        if(email == '') {
+            jQuery('#login_email_error').html('Please enter your email');
+            is_error = 'yes';
+        }
+        if(password == '') {
+            jQuery('#login_password_error').html('Please enter your password');
+            is_error = 'yes';
+        }
+        if(is_error == '') {
+            jQuery.ajax({
+                url: 'login_submit.php',
+                type: 'post',
+                // data: { 
+                //     email: email,
+                //     password: password
+                // },
+                data: 'email=' + email + '&password=' + password,
+                success: function(result) {
+                    if(result == 'wrong') {
+                        jQuery(".login_msg p").html('Please enter valid login details');
+                    }
+                    if(result == 'valid') {
+                        window.location.href = 'index.php';
                     }
                 }
             });
