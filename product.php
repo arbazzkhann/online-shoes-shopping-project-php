@@ -70,13 +70,28 @@
                             <div class="sin__desc">
                                 <p><span>Availability:</span> In Stock</p>
                             </div>
+                            <div class="sin__desc">
+                                <p><span>Qty: </span>
+                                    <Select>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                    </Select>
+                                </p>
+                            </div>
                             <div class="sin__desc align--left">
                                 <p><span>Categories:</span></p>
                                 <ul class="pro__cat__list">
                                     <li><a href="categories.php?id=<?php echo $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a></li>
                                 </ul>
                             </div>
-                            <a class="fr__btn" href="#">Add to cart</a>
+                            <a class="fr__btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0']['id']?>','add')">Add to cart</a>
                         </div>
                     </div>
                 </div>
