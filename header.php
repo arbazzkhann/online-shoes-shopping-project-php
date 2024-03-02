@@ -4,6 +4,7 @@ session_start();
 // including db connection
 require 'connection.inc.php';
 require 'functions.inc.php';
+require 'add_to_cart.inc.php';
 
 $cat_result = mysqli_query($conn, "SELECT * FROM categories WHERE status = 1 ORDER BY categories ASC");
 
@@ -12,6 +13,10 @@ $cat_arr = array();
 while($row = mysqli_fetch_assoc($cat_result)) {
     $cat_arr[] = $row;
 }
+
+$obj = new add_to_cart();
+
+$totalProduct = $obj -> totalProduct();
 ?>
 
 <!doctype html>
@@ -123,14 +128,13 @@ while($row = mysqli_fetch_assoc($cat_result)) {
 
                                     </div>
                                     <div class="htc__shopping__cart">
-                                        <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
-                                        <a href="#"><span class="htc__qua">0</span></a>
+                                        <a  href="cart.php"><i class="icon-handbag icons"></i></a> <!--class="cart__menu"-->
+                                        <a href="cart.php"><span class="htc__qua"><?php echo $totalProduct?></span></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mobile-menu-area"></div>
                 </div>
             </div>
             <!-- End Mainmenu Area -->
