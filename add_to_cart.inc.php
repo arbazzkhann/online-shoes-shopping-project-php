@@ -6,13 +6,13 @@
 class add_to_cart {
     // function for adding product into cart
     function addProduct($pid, $qty) {
-        $_SESSION['cart'][$pid][$qty] = $qty; 
+        $_SESSION['cart'][$pid]['$qty'] = $qty; 
     }
 
     // function for updating cart products
     function updateProduct($pid, $qty) {
         if(isset($_SESSION['cart'][$pid])) {
-            $_SESSION['cart'][$pid][$qty] = $qty;
+            $_SESSION['cart'][$pid]['$qty'] = $qty;
         }
     }
     

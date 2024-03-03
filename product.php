@@ -8,10 +8,10 @@
         $get_product = get_product($conn, '', '', $product_id);  //calling getproduct function and storing into variable
     }
     else { ?>
-        <script>
-            window.location.href = "index.php";
-        </script>   
-    <?php }?>
+<script>
+window.location.href = "index.php";
+</script>
+<?php }?>
 ?>
 
 
@@ -26,7 +26,8 @@
                         <nav class="bradcaump-inner">
                             <a class="breadcrumb-item" href="index.php">Home</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                            <a class="breadcrumb-item" href="categories.php?id<?php echo $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a>
+                            <a class="breadcrumb-item"
+                                href="categories.php?id<?php echo $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                             <span class="breadcrumb-item active"><?php echo $get_product['0']['name']?></span>
                         </nav>
@@ -72,23 +73,23 @@
                             </div>
                             <div class="sin__desc">
                                 <p><span>Qty: </span>
-                                    <Select>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
+                                    <Select id='qty'>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
                                     </Select>
                                 </p>
                             </div>
                             <div class="sin__desc align--left">
                                 <p><span>Categories:</span></p>
                                 <ul class="pro__cat__list">
-                                    <li><a href="categories.php?id=<?php echo $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a></li>
+                                    <li><a href="#" <?php echo $get_product['0']['categories']?>></a></li>
                                 </ul>
                             </div>
                             <a class="fr__btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0']['id']?>','add')">Add to cart</a>
@@ -122,7 +123,8 @@
                     <!-- Start Single Content -->
                     <div role="tabpanel" id="description" class="pro__single__content tab-pane fade in active">
                         <div class="pro__tab__content__inner">
-                            <?php echo $get_product['0']['description']?>  <!--Description from database-->
+                            <?php echo $get_product['0']['description']?>
+                            <!--Description from database-->
                         </div>
                     </div>
                     <!-- End Single Content -->
