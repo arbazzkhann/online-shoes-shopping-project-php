@@ -29,7 +29,7 @@ window.location.href = "index.php";
                             <a class="breadcrumb-item"
                                 href="categories.php?id=<?php echo $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                            <span class="breadcrumb-item active"><?php echo $get_product['0']['name']?></span>
+                            <span class="breadcrumb-item active"><a class="breadcrumb-item" href="product.php?id=<?php echo $get_product['0']['id']?>"><?php echo $get_product['0']['name']?></a></span>
                         </nav>
                     </div>
                 </div>
