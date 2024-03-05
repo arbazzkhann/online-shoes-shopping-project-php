@@ -14,6 +14,14 @@ if($type == 'add') {
     $obj -> addProduct($pid, $qty);
 }
 
+if($type == 'update') {
+    $obj -> updateProduct($pid, $qty);
+}
+
+if($type == 'remove') {
+    $obj -> removeProduct($pid);
+}
+
 echo $obj -> totalProduct();
 
 ?>

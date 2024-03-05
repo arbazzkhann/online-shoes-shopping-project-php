@@ -1,5 +1,5 @@
 <?php require 'header.php'?>
-<?php prx($_SESSION)?>
+<?php //prx($_SESSION)?>
 <!-- Start Bradcaump area -->
 <div class="ht__bradcaump__area"
     style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
@@ -58,11 +58,11 @@
                                         </ul>
                                     </td>
                                     <td class="product-price"><span class="amount">₹ <?php echo $price?></span></td>
-                                    <td class="product-quantity"><input type="number" value="<?php echo $qty?>" />
-                                        <br /><a href="#">update</a>
+                                    <td class="product-quantity"><input type="number" id="<?php echo $key?>qty" value="<?php echo $qty?>" />
+                                        <br /><a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','update')"><i class="icon-trash icons"></i>update</a>
                                     </td>
                                     <td class="product-subtotal"><?php echo $qty * $price?></td>
-                                    <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
+                                    <td class="product-remove"><a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','remove')"><i class="icon-trash icons"></i></a></td>
                                 </tr>
 
                                 <?php } ?> <!--Loop Ends-->
