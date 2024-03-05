@@ -24,7 +24,7 @@
                         <nav class="bradcaump-inner">
                             <a class="breadcrumb-item" href="index.php">Home</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                            <a class="breadcrumb-item" href="categories.php?id<?php echo $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a>
+                            <a class="breadcrumb-item" href="categories.php?id=<?php echo $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a>
                         </nav>
                     </div>
                 </div>
