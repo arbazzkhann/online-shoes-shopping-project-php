@@ -1,5 +1,5 @@
 <?php require 'header.php'?>
-<?php //prx($_SESSION)?>
+<?php prx($_SESSION)?>
 <!-- Start Bradcaump area -->
 <div class="ht__bradcaump__area"
     style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
@@ -46,7 +46,7 @@
                                         $mrp = $productArr[0]['mrp'];
                                         $price = $productArr[0]['price'];
                                         $image = $productArr[0]['image'];
-                                        $qty = $productArr[0]['qty'];
+                                        $qty = $val['qty'];
                                 ?>
                                 <tr>
                                     <td class="product-thumbnail"><a href="#">
