@@ -557,7 +557,7 @@ function send_message() {
                         jQuery(".login_msg p").html('Please enter valid login details');
                     }
                     if(result == 'valid') {
-                        window.location.href = 'index.php';
+                        window.location.href = window.location.href;
                     }
                 }
             });
@@ -573,6 +573,7 @@ function send_message() {
         }
         else {
             qty = jQuery("#qty").val();
+            window.location.href = window.location.href;
         }
 
             jQuery.ajax({

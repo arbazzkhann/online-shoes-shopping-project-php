@@ -87,15 +87,13 @@
                             </div>
                             <div class="single-contact-form">
                                 <div class="contact-box name">
-                                    <input type="text" name="mobile" id="mobile" placeholder="Mobile*"
-                                        style="width:100%">
+                                    <input type="text" name="mobile" id="mobile" placeholder="Mobile*" style="width:100%">
                                 </div>
                                 <span class="field_error" id="mobile_error"></span>
                             </div>
                             <div class="single-contact-form">
                                 <div class="contact-box name">
-                                    <input type="password" name="password" id="password" placeholder="Password*"
-                                        style="width:100%">
+                                    <input type="password" name="password" id="password" placeholder="Password*" style="width:100%">
                                 </div>
                                 <span class="field_error" id="password_error"></span>
                             </div>

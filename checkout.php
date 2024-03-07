@@ -1,4 +1,11 @@
-<?php require 'header.php'?>
+<?php 
+    require 'header.php';   //header file
+
+    if(!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) { ?>
+<script>
+window.location.href = "index.php";
+</script>
+<?php } ?>
 
 <!-- Start Bradcaump area -->
 <div class="ht__bradcaump__area"
@@ -28,58 +35,78 @@
                 <div class="checkout__inner">
                     <div class="accordion-list">
                         <div class="accordion">
+
+
+                        <!-- Login/Registration Section -->
+                        <?php 
+                            $accordion_class = 'accordion__title';
+                            if(!isset($_SESSION['USER_LOGIN'])) { 
+                                $accordion_class = 'accordion__hide';    
+                        ?>
                             <div class="accordion__title">
-                                Checkout Method
+                                Login/Registration
                             </div>
                             <div class="accordion__body">
                                 <div class="accordion__body__form">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="checkout-method__login">
-                                                <form action="#">
+                                                <form id="register-form" method="post">
                                                     <h5 class="checkout-method__title">Login</h5>
                                                     <div class="single-input">
-                                                        <label for="user-email">Email Address</label>
-                                                        <input type="email" id="user-email">
+                                                        <input type="email" name="login_email" id="login_email" placeholder="Email*" style="width:100%">
+                                                        <span class="field_error" id="login_email_error"></span>
                                                     </div>
                                                     <div class="single-input">
-                                                        <label for="user-pass">Password</label>
-                                                        <input type="password" id="user-pass">
+                                                        <input type="password" name="login_password" id="login_password" placeholder="Password*" style="width:100%">
+                                                        <span class="field_error" id="login_password_error"></span>
                                                     </div>
-                                                    <p class="require">* Required fields</p>
                                                     <div class="dark-btn">
-                                                        <a href="#">LogIn</a>
+                                                        <button type="button" class="fv-btn" onclick="user_login()">Login</button>
                                                     </div>
                                                 </form>
+                                                <div class="form-output login_msg">
+                                                    <p class="form-messege field_error"></p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-method__login">
-                                                <form action="#">
+                                                <form id="register-form" method="post">
                                                     <h5 class="checkout-method__title">Register</h5>
                                                     <div class="single-input">
-                                                        <label for="user-email">Name</label>
-                                                        <input type="email" id="user-email">
+                                                    <input type="text" name="name" id="name" placeholder="Full Name*" style="width:100%">
+                                                    <span class="field_error" id="name_error"></span>
                                                     </div>
                                                     <div class="single-input">
-                                                        <label for="user-email">Email Address</label>
-                                                        <input type="email" id="user-email">
+                                                        <input type="email" name="email" id="email" placeholder="Email*" style="width:100%">
+                                                        <span class="field_error" id="email_error"></span>
                                                     </div>
-
                                                     <div class="single-input">
-                                                        <label for="user-pass">Password</label>
-                                                        <input type="password" id="user-pass">
+                                                        <input type="text" name="mobile" id="mobile" placeholder="Mobile*" style="width:100%">
+                                                        <span class="field_error" id="mobile_error"></span>
+                                                    </div>
+                                                    <div class="single-input">
+                                                        <input type="password" name="password" id="password" placeholder="Password*" style="width:100%">
+                                                        <span class="field_error" id="password_error"></span>
                                                     </div>
                                                     <div class="dark-btn">
-                                                        <a href="#">Register</a>
+                                                        <button type="button" class="fv-btn" onclick="user_register()">Register</button>
                                                     </div>
                                                 </form>
+                                                <div class="form-output register_msg">
+                                                    <p class="form-messege field_error"></p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion__title">
+                        <?php } ?>
+
+
+                            <!-- Address Information Section -->
+                            <div class="<?php echo $accordion_class?>">
                                 Address Information
                             </div>
                             <div class="accordion__body">
@@ -88,17 +115,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="single-input">
-                                                    <input type="text" placeholder="First name">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="single-input">
                                                     <input type="text" placeholder="Street Address">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="single-input">
-                                                    <input type="text" placeholder="Apartment/Block/House (optional)">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -108,24 +125,17 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="single-input">
-                                                    <input type="text" placeholder="Post code/ zip">
+                                                    <input type="text" placeholder="Pin code">
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="single-input">
-                                                    <input type="email" placeholder="Email address">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="single-input">
-                                                    <input type="text" placeholder="Phone number">
-                                                </div>
-                                            </div>
+                                            </div>  
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            <div class="accordion__title">
+
+
+                            <!-- Payment Information Section -->
+                            <div class="<?php echo $accordion_class?>">
                                 payment information
                             </div>
                             <div class="accordion__body">
@@ -157,7 +167,6 @@
                                 $image = $productArr[0]['image'];
                                 $qty = $val['qty'];
                                 $cart_total = $cart_total + ($price * $qty);
-                                
                         ?>
                         <div class="single-item">
                             <div class="single-item__thumb">
@@ -168,7 +177,8 @@
                                 <span class="price">₹ <?php echo $price * $qty?></span>
                             </div>
                             <div class="single-item__remove">
-                                <a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','remove')"><i class="zmdi zmdi-delete"></i></a>
+                                <a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','remove')"><i
+                                        class="zmdi zmdi-delete"></i></a>
                             </div>
                         </div>
                         <?php } ?>
