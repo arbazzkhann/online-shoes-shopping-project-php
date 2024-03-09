@@ -34,9 +34,34 @@
         $order_status = 'pending';
         $added_on = date('Y-m-d h:i:s');
 
+        //sql for inserting address and order details into database
         $sql = "INSERT INTO `order` (user_id, address, city, pincode, payment_type, payment_status, order_status, added_on, total_price) VALUES ('$user_id', '$address', '$city', '$pincode', '$payment_type', '$payment_status', '$order_status', '$added_on', '$total_price')";
-
         mysqli_query($conn, $sql);
+
+        //fetching order id from database
+        $order_id = mysqli_insert_id($conn);
+
+
+        foreach($_SESSION['cart'] as $key => $val) {    
+            $productArr = get_product($conn, '', '', $key);
+            $price = $productArr[0]['price'];
+            $qty = $val['qty'];
+
+            //sql quert for inserting order_details into database
+            $sql = "INSERT INTO `order_details` (order_id, product_id, qty, price) VALUES ('$order_id', '$key', '$qty', '$price')";
+            mysqli_query($conn, $sql);
+
+        }
+
+        // unsetting cart items
+        unset($_SESSION['cart']);
+
+        ?>
+            <script>
+                window.location.href = "thank_you.php";
+            </script>
+        <?php 
+        
     }
 ?>
 
