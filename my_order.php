@@ -48,10 +48,15 @@
                                         $uid = $_SESSION['USER_ID'];  
                                         
                                         //sql form selecting user order by user id
-                                        $sql = "(SELECT * FROM `order` WHERE user_id = '$uid')";  
+                                        $sql = "SELECT `order`.*, order_status.name AS order_status_str FROM `order`, order_status WHERE `order`.user_id = '$uid' AND order_status.id = `order`.order_status";  
+                                        // $sql = "SELECT `order`.*, order_status.name AS order_status_str 
+                                        //         FROM `order`, order_status 
+                                        //         WHERE `order`.user_id = '$uid' 
+                                        //         AND order_status.id = `order`.order_status";
+                                          
                                         $result = mysqli_query($conn, $sql);
 
-                                        while($row = mysqli_fetch_assoc($result)) {
+                                        while($row = mysqli_fetch_assoc($result)) { 
                                     ?>
 
                                     <tr>
@@ -64,7 +69,7 @@
                                         </td>
                                         <td class="product-name"> <?php echo $row['payment_type']?> </td>
                                         <td class="product-name"> <?php echo $row['payment_status']?> </td>
-                                        <td class="product-name"> <?php echo $row['order_status']?> </td>
+                                        <td class="product-name"> <?php echo $row['order_status_str']?> </td>
                                         </td>
                                     </tr>
                                     <?php }?>

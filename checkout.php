@@ -31,7 +31,7 @@
         if($payment_type == 'COD') {
             $payment_status = 'success';
         }
-        $order_status = 'pending';
+        $order_status = '1';
         $added_on = date('Y-m-d h:i:s');
 
         //sql for inserting address and order details into database

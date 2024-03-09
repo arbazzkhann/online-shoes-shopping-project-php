@@ -1,4 +1,16 @@
-<?php require 'header.php'?>
+<?php 
+require 'header.php'; //header file
+
+if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN'] == 'yes') { ?>
+    
+    <script>
+        window.location.href = 'my_order.php';
+    </script>
+
+    <?php
+    }
+    ?>
+?>
 
 <!-- Start Bradcaump area -->
 <div class="ht__bradcaump__area"
