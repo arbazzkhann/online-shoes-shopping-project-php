@@ -49,11 +49,6 @@
                                         
                                         //sql form selecting user order by user id
                                         $sql = "SELECT `order`.*, order_status.name AS order_status_str FROM `order`, order_status WHERE `order`.user_id = '$uid' AND order_status.id = `order`.order_status";  
-                                        // $sql = "SELECT `order`.*, order_status.name AS order_status_str 
-                                        //         FROM `order`, order_status 
-                                        //         WHERE `order`.user_id = '$uid' 
-                                        //         AND order_status.id = `order`.order_status";
-                                          
                                         $result = mysqli_query($conn, $sql);
 
                                         while($row = mysqli_fetch_assoc($result)) { 
