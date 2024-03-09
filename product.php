@@ -56,7 +56,6 @@ window.location.href = "index.php";
                             </div>
                         </div>
                         <!-- End Product Big Images -->
-
                     </div>
                 </div>
                 <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
