@@ -1,19 +1,28 @@
 <?php
 
+// Database Details
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "online shoes shopping";
+// $database = "online shoes shopping";
+$database = "bb";
 
 
+// Database Connection
 $conn= mysqli_connect($servername, $username, $password, $database);
+
 
 // Admin Users Table
 $sql = "CREATE TABLE IF NOT EXISTS `admin_users` (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(255) NOT NULL,
+        username VARCHAR(255) NOT NULL UNIQUE,
         password VARCHAR(255) NOT NULL)";
 
+mysqli_query($conn, $sql);
+
+
+// Inserting Admin detail
+$sql = "INSERT INTO `admin_users` (username, password) VALUES ('admin', 'admin')";
 mysqli_query($conn, $sql);
 
 
