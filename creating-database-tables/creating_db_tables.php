@@ -29,9 +29,15 @@ mysqli_query($conn, $sql);
 // Categories Table
 $sql = "CREATE TABLE IF NOT EXISTS `categories` (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    categories VARCHAR(255) NOT NULL,
+    categories VARCHAR(255) NOT NULL UNIQUE,
     status TINYINT(4) NOT NULL)";
 
+mysqli_query($conn, $sql);
+
+
+// Inserting Order Status
+$sql = "INSERT INTO `categories` (categories, status) VALUES ('Shoes', 1)";
+        
 mysqli_query($conn, $sql);
 
 
@@ -77,9 +83,21 @@ mysqli_query($conn, $sql);
 // Order Status Table
 $sql = "CREATE TABLE IF NOT EXISTS `order_status` (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(60) NOT NULL)";
+    name VARCHAR(60) NOT NULL UNIQUE)";
 
 mysqli_query($conn, $sql);
+
+
+// Inserting Order Status
+$sql = "INSERT INTO `order_status` (name) VALUES 
+        ('Pending'),
+        ('Processing'),
+        ('Shipped'),
+        ('Canceled'),
+        ('Complete')";
+
+mysqli_query($conn, $sql);
+
 
 
 // Product Table
