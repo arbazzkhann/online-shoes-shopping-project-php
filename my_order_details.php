@@ -2,7 +2,6 @@
     require 'header.php';
     $order_id = get_safe_value($conn, $_GET['id']);
 
-
 ?>
 <?php //prx($_SESSION)?>
 <!-- Start Bradcaump area -->
@@ -44,11 +43,10 @@
                                         <th>Qty</th>
                                         <th>Price</th>
                                         <th>Total Price</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-
-
                                         //userid from session array
                                         $uid = $_SESSION['USER_ID'];  
                                         
@@ -71,7 +69,6 @@
                                         <td class="product-name"> <?php echo $row['qty']?> </td>
                                         <td class="product-name"> <?php echo $row['price']?> </td>
                                         <td class="product-name">₹ <?php echo $row['qty'] * $row['price']?> </td>
-                                        </td>
                                     </tr>
 
                                     <?php }?>  <!--Loop end-->

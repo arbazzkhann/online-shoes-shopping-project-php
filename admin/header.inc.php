@@ -48,7 +48,7 @@
                         <a href="product.php"> Product Master </a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#"> Order Master</a>
+                        <a href="order_master.php"> Order Master</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="users.php"> User Master</a>
@@ -64,7 +64,7 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Logo"></a>
+                    <a class="navbar-brand" href="http://localhost/online-shoes-shopping-project-php/admin/categories.php"><img src="images/logo.png" alt="Logo"></a>
                     <a class="navbar-brand hidden" href="index.html"><img src="images/logo2.png" alt="Logo"></a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
