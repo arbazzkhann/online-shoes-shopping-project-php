@@ -64,7 +64,10 @@ $sql = "CREATE TABLE IF NOT EXISTS `order` (
     total_price FLOAT NOT NULL,
     payment_status VARCHAR(20) NOT NULL,
     order_status INT NOT NULL,
-    added_on DATETIME NOT NULL)";
+    added_on DATETIME NOT NULL,
+    txnid VARCHAR(20) NOT NULL,
+    mihpayid VARCHAR(20) NOT NULL,
+    payu_status VARCHAR(10) NOT NULL)";
 
 mysqli_query($conn, $sql);
 
