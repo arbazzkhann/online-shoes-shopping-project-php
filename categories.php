@@ -1,10 +1,41 @@
 <?php 
     require 'header.php'; //Header
-    $cat_id = mysqli_real_escape_string($conn, $_GET['id']);  // Storing id into variable
+    $cat_id = mysqli_real_escape_string($conn, $_GET['id']);  // Storting id into variable
+
+    $new = "";
+    $price_high = "";
+    $price_low = "";
+    $old = "";
+
+    $sort_order = '';
+    if(isset($_GET['sort'])) {
+        $sort = $_GET['sort']; // sort type from GET Request
+        switch ($sort) {    // Switch Case
+            case 'new':
+                $sort_order = " ORDER BY product.id DESC";
+                $new = "selected";
+                break;
+            case 'price_high':
+                $sort_order = " ORDER BY product.price ASC";
+                $price_high = "selected";
+                break;
+            case 'price_low':
+                $sort_order = " ORDER BY product.price DESC";
+                $price_low = "selected";
+                break;
+            case 'old':
+                $sort_order = " ORDER BY product.id ASC";
+                $old = "selected";
+                break;
+            default:
+                // Handle invalid sort option
+                break;
+        }
+    }
 
     //condition if user put negative id in url
     if($cat_id > 0 ) {
-        $get_product = get_product($conn, '', $cat_id);  //calling getproduct function and storing into variable
+        $get_product = get_product($conn, '', $cat_id, '', '', $sort_order);  //calling getproduct function and storing into variable
     }
     else { ?>
         <script>
@@ -44,11 +75,11 @@
                 <div class="htc__product__rightidebar">
                     <div class="htc__grid__top">
                         <div class="htc__select__option">
-                            <select class="ht__select">
-                                <option>Default softing</option>
-                                <option>Sort by popularity</option>
-                                <option>Sort by average rating</option>
-                                <option>Sort by newness</option>
+                            <select class="ht__select" onchange="sort_product_drop('<?php echo $cat_id?>', '<?php echo SITE_PATH?>')" id="sort_product_id">
+                                <option value="new" <?php echo $new?>>New Products</option>
+                                <option value="price_high" <?php echo $price_high?>>High to Low</option>
+                                <option value="price_low" <?php echo $price_low?>>Low to High</option>
+                                <option value="old" <?php echo $old?>>Old Products</option>
                             </select>
                         </div>
                     </div>
