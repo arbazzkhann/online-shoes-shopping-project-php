@@ -115,6 +115,9 @@ $totalProduct = $obj -> totalProduct();
                             </div>
                             <div class="col-md-3 col-lg-3 col-sm-4 col-xs-4">
                                 <div class="header__right">
+                                    <div class="header__search search search__open">
+                                        <a href="#"><i class="icon-magnifier icons"></i></a>
+                                    </div>
                                     <div class="header__account">
                                         <!-- checking user is logged session exists in or not -->
                                         <?php 
@@ -140,3 +143,30 @@ $totalProduct = $obj -> totalProduct();
             <!-- End Mainmenu Area -->
         </header>
         <!-- End Header Area -->
+
+
+
+        <div class="body__overlay"></div>
+        <!-- Start Offset Wrapper -->
+        <div class="offset__wrapper">
+            <!-- Start Search Popap -->
+            <div class="search__area">
+                <div class="container" >
+                    <div class="row" >
+                        <div class="col-md-12" >
+                            <div class="search__inner">
+                                <form action="search.php" method="get">
+                                    <input placeholder="Search here... " type="text" name="str">
+                                    <button type="submit"></button>
+                                </form>
+                                <div class="search__close__btn">
+                                    <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Search Popap -->
+        </div>
+        </div>
