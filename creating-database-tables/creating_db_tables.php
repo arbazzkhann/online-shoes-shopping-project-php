@@ -111,6 +111,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `product` (
     image VARCHAR(2000) NOT NULL,
     short_desc VARCHAR(2000) NOT NULL,
     description TEXT NOT NULL,
+    bes 
     meta_title TEXT,
     meta_desc TEXT,
     meta_keyword VARCHAR(2000),
