@@ -2,9 +2,9 @@
     require 'header.php';   //header file
 
     if(!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) { ?>
-    <script>
-    window.location.href = "index.php";
-    </script>
+        <script>
+        window.location.href = "index.php";
+        </script>
 <?php 
     } 
 
@@ -77,7 +77,7 @@
             $sql = "SELECT * FROM `users` WHERE id = '$user_id'";
             $result = mysqli_query($conn, $sql);
             $userArr = mysqli_fetch_assoc($result);
-
+            
             $formError = 0;
             $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
             $posted['txnid'] = $txnid;
