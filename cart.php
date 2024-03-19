@@ -30,8 +30,8 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="product-thumbnail">products</th>
-                                    <th class="product-name">name of products</th>
+                                    <th class="product-thumbnail">Products</th>
+                                    <th class="product-name">Name of products</th>
                                     <th class="product-price">Price</th>
                                     <th class="product-quantity">Quantity</th>
                                     <th class="product-subtotal">Total</th>
@@ -40,6 +40,7 @@
                             </thead>
                             <tbody>
                                 <?php
+                                if($_SESSION['cart'] != '') {
                                     foreach($_SESSION['cart'] as $key => $val) {
                                         $productArr = get_product($conn, '', '', $key);
                                         $pname = $productArr[0]['name'];
@@ -47,6 +48,7 @@
                                         $price = $productArr[0]['price'];
                                         $image = $productArr[0]['image'];
                                         $qty = $val['qty'];
+                                }
                                 ?>
                                 <tr>
                                     <td class="product-thumbnail"><a href="#">
