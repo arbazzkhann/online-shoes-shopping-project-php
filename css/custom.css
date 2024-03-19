@@ -18,3 +18,7 @@
   font-family: "Poppins";
   cursor: pointer;
 }
+
+#color-red {
+  color: rgb(214, 44, 44);
+}
