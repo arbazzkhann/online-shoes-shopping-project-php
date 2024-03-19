@@ -35,6 +35,15 @@ $sql = "CREATE TABLE IF NOT EXISTS `categories` (
 mysqli_query($conn, $sql);
 
 
+// Inserting Data into Categories Table
+$sql = "INSERT INTO `categories` (categories, status) VALUES 
+        ('Nike', 1),
+        ('Adidas', 1),
+        ('Puma', 1)";
+
+mysqli_query($conn, $sql);
+
+
 // Inserting Order Status
 $sql = "INSERT INTO `categories` (categories, status) VALUES ('Shoes', 1)";
         
@@ -131,4 +140,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `users` (
 
 mysqli_query($conn, $sql);
 
+
 ?>  
+
+
