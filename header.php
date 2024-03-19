@@ -17,6 +17,26 @@ while($row = mysqli_fetch_assoc($cat_result)) {
 $obj = new add_to_cart();
 
 $totalProduct = $obj -> totalProduct();
+
+// Current Page Address
+$script_name = $_SERVER['SCRIPT_NAME'];
+
+$script_name_arr = explode('/', $script_name);
+$mypage = $script_name_arr[count($script_name_arr) - 1];
+
+$meta_title = 'Online Shoes Shopping';
+$meta_desc = 'Online Shoes Shopping';
+$meta_keyword = 'Online Shoes Shopping';
+
+if($mypage == 'product.php') {
+    $product_id = get_safe_value($conn, $_GET['id']);
+    $product_meta = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM product WHERE id = '$product_id'"));
+    $meta_title = $product_meta['meta_title'];
+    $meta_desc = $product_meta['meta_desc'];
+    $meta_keyword = $product_meta['meta_keyword'];
+}
+
+
 ?>
 
 <!doctype html>
@@ -25,8 +45,9 @@ $totalProduct = $obj -> totalProduct();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Online Shoes Shopping</title>
-    <meta name="description" content="">
+    <title><?php echo $meta_title?></title>
+    <meta name="description" content="<?php echo $meta_desc?>">
+    <meta name="keywords" content="<?php echo $meta_keyword?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Place favicon.ico in the root directory -->
