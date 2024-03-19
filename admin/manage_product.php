@@ -12,8 +12,9 @@ $description = '';
 $meta_title = '';
 $meta_desc = '';
 $meta_keyword = '';
-$msg = '';
+$best_seller = '';
 
+$msg = '';
 $image_required = 'required';
 
 
@@ -35,6 +36,7 @@ if(isset($_GET['id']) && $_GET['id'] != '') {
         $meta_title = $row['meta_title'];
         $meta_desc = $row['meta_desc'];
         $meta_keyword = $row['meta_keyword'];
+        $best_seller = $row['best_seller'];
     }
     else {
         header('location: product.php');
@@ -54,6 +56,7 @@ if(isset($_POST['submit'])) {
     $meta_title = get_safe_value($conn, $_POST['meta_title']);
     $meta_desc = get_safe_value($conn, $_POST['meta_desc']);
     $meta_keyword = get_safe_value($conn, $_POST['meta_keyword']);
+    $best_seller = get_safe_value($conn, $_POST['best_seller']);
 
     $result = mysqli_query($conn, "SELECT * FROM product WHERE name='$name'");
     $check = mysqli_num_rows($result);
@@ -89,11 +92,11 @@ if(isset($_POST['submit'])) {
                 move_uploaded_file($_FILES['image']['tmp_name'],'../media/product/'. $image);
 
                 //if admin wants to change image
-                $update_sql = "UPDATE product set categories_id='$categories_id', name='$name', mrp='$mrp', price='$price', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword', image='$image' WHERE id=$id";
+                $update_sql = "UPDATE product set categories_id='$categories_id', name='$name', mrp='$mrp', price='$price', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword', best_seller='$best_seller' image='$image' WHERE id=$id";
             }
             else {
                 //admin dont want to change image
-                $update_sql = "UPDATE product set categories_id='$categories_id', name='$name', mrp='$mrp', price='$price', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword' WHERE id=$id";
+                $update_sql = "UPDATE product set categories_id='$categories_id', name='$name', mrp='$mrp', price='$price', qty='$qty', short_desc='$short_desc', description='$description', meta_title='$meta_title', meta_desc='$meta_desc', meta_keyword='$meta_keyword', best_seller='$best_seller' WHERE id=$id";
             }
             mysqli_query($conn, $update_sql);  //applying sql query for updating product
         } 
@@ -104,7 +107,7 @@ if(isset($_POST['submit'])) {
             move_uploaded_file($_FILES['image']['tmp_name'],'../media/product/'. $image);
 
             //applying sql query for inserting product into database
-            $inserting_sql = "INSERT INTO product (categories_id, name, mrp, price, qty, short_desc, description, meta_title, meta_desc, meta_keyword, status, image) VALUES ('$categories_id', '$name', '$mrp', '$price', '$qty', '$short_desc', '$description', '$meta_title', '$meta_desc', '$meta_keyword', 1, '$image')";
+            $inserting_sql = "INSERT INTO product (categories_id, name, mrp, price, qty, short_desc, description, meta_title, meta_desc, meta_keyword, status, image, best_seller) VALUES ('$categories_id', '$name', '$mrp', '$price', '$qty', '$short_desc', '$description', '$meta_title', '$meta_desc', '$meta_keyword', 1, '$image', '$best_seller')";
             mysqli_query($conn, $inserting_sql);  //applying sql query for inserting product
         }
         header('location: product.php');
@@ -145,43 +148,65 @@ if(isset($_POST['submit'])) {
 
                         <!-- Product name -->
                         <div class="form-group">
-                                <label for="name" class="form-control-label">Product Name</label>
+                                <label for="name" class="form-control-label">Product Name<span class="imp_star">*</span></label>
                                 <input type="text" name="name" placeholder="Enter product name" class="form-control" required value="<?php echo $name?>">
+                        </div>
+
+                        <!-- Best Seller -->
+                        <div class="form-group">
+                                <label for="categories" class=" form-control-label">Best Seller<span class="imp_star">*</span></label>
+                                <select  class="form-control" name="best_seller" required>
+                                    <option value="">Select</option>
+                                    <?php
+                                        if($best_seller == 1) {
+                                            echo    '<option value="1" selected>Yes</option>
+                                                    <option value="0">No</option>';
+                                        } elseif($best_seller == 0) {
+                                            echo    '<option value="1">Yes</option>
+                                                    <option value="0" selected>No</option>';
+                                        } else {
+                                            echo    '<option value="1">Yes</option>
+                                                    <option value="0">No</option>';
+                                        }
+                                    ?>
+                                    
+                                    <option value="0">No</option>
+                                </select>
                         </div>
 
                         <!-- Product MRP -->
                         <div class="form-group">
-                                <label for="mrp" class="form-control-label">MRP</label>
+                                <label for="mrp" class="form-control-label">MRP<span class="imp_star">*</span></label>
                                 <input type="text" name="mrp" placeholder="Enter product mrp" class="form-control" required value="<?php echo $mrp?>">
                         </div>
 
                         <!-- Product Price -->
                         <div class="form-group">
-                                <label for="price" class="form-control-label">Price</label>
+                                <label for="price" class="form-control-label">Price<span class="imp_star">*</span></label>
                                 <input type="text" name="price" placeholder="Enter product price" class="form-control" required value="<?php echo $price?>">
                         </div>
 
                         <!-- Product quantity -->
                         <div class="form-group">
-                                <label for="qty" class="form-control-label">Quantity</label>
+                                <label for="qty" class="form-control-label">Quantity<span class="imp_star">*</span></label>
                                 <input type="text" name="qty" placeholder="Enter product quantities" class="form-control" required value="<?php echo $qty?>">
                         </div>
 
                         <!-- Product image -->
                         <div class="form-group">
-                                <label for="image" class="form-control-label">Product Image</label>
+                                <label for="image" class="form-control-label">Product Image<span class="imp_star">*</span></label>
                                 <input type="file" name="image" placeholder="Enter product image" class="form-control" <?php echo $image_required?>>
                         </div>
 
                         <!-- Short description -->
                         <div class="form-group">
-                                <label for="short_desc" class="form-control-label">Short Description</label>
+                                <label for="short_desc" class="form-control-label">Short Description<span class="imp_star">*</span></label>
                                 <textarea name="short_desc" placeholder="Enter short description" class="form-control" required><?php echo $short_desc?></textarea>
                         </div>
                     
                         <!-- Description -->
                         <div class="form-group">
-                                <label for="description" class="form-control-label">Description</label>
+                                <label for="description" class="form-control-label">Description<span class="imp_star">*</span></label>
                                 <textarea name="description" placeholder="Enter description" class="form-control" required><?php echo $description?></textarea>
                         </div>
                     
