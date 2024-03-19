@@ -101,7 +101,7 @@
                                         </div>
 
                                         <div class="fr__product__inner">
-                                            <h4><a href="product-details.html"><?php echo $list['name']?></a></h4>
+                                            <h4><a href="product.php?id=<?php echo $list['id']?>"><?php echo $list['name']?></a></h4>
                                             <ul class="fr__pro__prize">
                                                 <li class="old__prize">₹ <strike><?php echo $list['mrp']?></strike></li>
                                                 <li>₹ <?php echo $list['price']?></li>
