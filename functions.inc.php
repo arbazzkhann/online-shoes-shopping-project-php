@@ -49,7 +49,7 @@ function get_safe_value($conn, $str) {
 // }
 
 
-function get_product($conn, $limit = '', $cat_id = '', $product_id = '', $search_str = '', $sort_order = '') {
+function get_product($conn, $limit = '', $cat_id = '', $product_id = '', $search_str = '', $sort_order = '', $is_best_seller = '') {
     // Initialize the SQL query
     $sql =  "SELECT product.*, categories.categories FROM product JOIN categories ON product.categories_id = categories.id WHERE product.status = 1";
 
@@ -58,6 +58,10 @@ function get_product($conn, $limit = '', $cat_id = '', $product_id = '', $search
         $sql .= " AND product.categories_id = $cat_id ";
     }
     
+    if ($is_best_seller !== '') {
+        $sql .= " AND product.best_seller = 1 ";
+    }
+
     if ($product_id !== '') {
         $sql .= " AND product.id = $product_id ";
     }
