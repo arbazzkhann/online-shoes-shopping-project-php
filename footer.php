@@ -12,13 +12,13 @@
                                     <p>"Welcome to Online Shoes Shopping, your one-stop destination for trendy footwear and unbeatable deals. Step into style today!"</p>
                                     <div class="ft__social__link">
                                         <ul class="social__link">
-                                            <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
-
+                                            <li><a href="https://github.com/arbazzkhann/"><i class="icon-social-github icons"></i></a></li>
+                                            
                                             <li><a href="https://www.instagram.com/xr_arbazsaifi/"><i class="icon-social-instagram icons"></i></a></li>
-
-                                            <li><a href="#"><i class="icon-social-facebook icons"></i></a></li>
-
+                                            
                                             <li><a href="https://www.linkedin.com/in/arbazzkhann/"><i class="icon-social-linkedin icons"></i></a></li>
+
+                                            <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
