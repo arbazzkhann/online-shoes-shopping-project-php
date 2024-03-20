@@ -229,6 +229,162 @@ VALUES
 mysqli_query($conn, $sql);
 
 
+// Adidas Shoes Data
+$sql = "INSERT INTO `product` (
+    categories_id, 
+    name, 
+    mrp, 
+    price, 
+    qty, 
+    image, 
+    short_desc, 
+    description, 
+    best_seller, 
+    meta_title, 
+    meta_desc, 
+    meta_keyword
+) 
+VALUES 
+(
+    '2', 
+    'Adidas GAZELLE SHOES', 
+    15499, 
+    10999, 
+    5, 
+    '952449534_Adidas-GAZELLE-SHOES-10999.jpeg', 
+    'This is Adidas GAZELLE SHOES', 
+    'The Adidas GAZELLE SHOES are a variant of the classic Adidas Gazelle silhouette, known for its iconic design and versatile style. The GAZELLE designation likely refers to an oversized or exaggerated feature of the shoe, though without further context it\'s unclear exactly what aspect of the shoe is being emphasized. Adidas Gazelle shoes have been a staple in sneaker culture since their introduction in the 1960s, originally designed as training shoes but later gaining popularity as casual streetwear. They are characterized by their suede upper, contrasting stripes, and timeless aesthetic. Without specific details on the GAZELLE variation, it\'s difficult to provide a more detailed description. However, Adidas often releases special editions or collaborations within their Gazelle line, which may feature unique colorways, materials, or design elements.', 
+    0, 
+    'All new Adidas gazelle shoes', 
+    'new Adidas gazelle shoes', 
+    'Adidas shoes gazelle shoe sports sneakers'
+),
+(
+    '2', 
+    'Adidas SUPERSTAR SHOES', 
+    12549, 
+    8999, 
+    5, 
+    '362277941_Adidas-SUPERSTAR-SHOES-8999.jpeg', 
+    'This is Adidas SUPERSTAR SHOES', 
+    'The Adidas SUPERSTAR SHOES are a variant of the classic Adidas Superstar silhouette, known for its iconic design and versatile style. The SUPERSTAR designation likely refers to an oversized or exaggerated feature of the shoe, though without further context it\'s unclear exactly what aspect of the shoe is being emphasized. Adidas Superstar shoes have been a staple in sneaker culture since their introduction in the 1960s, originally designed as basketball shoes but later gaining popularity as casual streetwear. They are characterized by their leather upper, rubber shell toe, and timeless aesthetic. Without specific details on the SUPERSTAR variation, it\'s difficult to provide a more detailed description. However, Adidas often releases special editions or collaborations within their Superstar line, which may feature unique colorways, materials, or design elements.', 
+    0, 
+    'All new Adidas superstar shoes', 
+    'new Adidas superstar shoes', 
+    'Adidas shoes superstar shoe sports sneakers'
+),
+(
+    '2', 
+    'Adidas FORUM LOW SHOES', 
+    12499, 
+    9999, 
+    5, 
+    '819358039_FORUM-LOW-SHOES-9999.jpeg', 
+    'This is new Adidas FORUM-LOW-SHOES', 
+    'The Adidas FORUM-LOW-SHOES are a variant of the classic Forum Low silhouette, known for its iconic design and versatile style. The FORUM-LOW designation likely refers to an oversized or exaggerated feature of the shoe, though without further context it\'s unclear exactly what aspect of the shoe is being emphasized. Forum Low shoes have been a staple in sneaker culture since their introduction, originally designed as basketball shoes but later gaining popularity as casual streetwear. They are characterized by their sleek design, low profile, and timeless aesthetic. Without specific details on the FORUM-LOW variation, it\'s difficult to provide a more detailed description. However, Adidas often releases special editions or collaborations within their Forum Low line, which may feature unique colorways, materials, or design elements.', 
+    0, 
+    'All new Forum Low shoes', 
+    'new Adidas Forum Low shoes', 
+    'Adidas Forum Low shoes sneaker sports'
+),
+(
+    '2', 
+    'Adidas STAN SMITH SHOES', 
+    12459, 
+    8999, 
+    5, 
+    '185325951_STAN-SMITH-SHOES-8999.jpeg', 
+    'This is Adidas STAN SMITH SHOES', 
+    'The Adidas STAN SMITH SHOES are a variant of the classic Adidas Stan Smith silhouette, known for its iconic design and versatile style. The STAN SMITH designation likely refers to an oversized or exaggerated feature of the shoe, though without further context it\'s unclear exactly what aspect of the shoe is being emphasized. Adidas Stan Smith shoes have been a staple in sneaker culture since their introduction in the 1960s, originally designed as tennis shoes but later gaining popularity as casual streetwear. They are characterized by their clean, minimalist design, leather upper, and timeless aesthetic. Without specific details on the STAN SMITH variation, it\'s difficult to provide a more detailed description. However, Adidas often releases special editions or collaborations within their Stan Smith line, which may feature unique colorways, materials, or design elements.', 
+    0, 
+    'All new Adidas STAN SMITH shoes', 
+    'new Adidas STAN SMITH shoes', 
+    'Adidas STAN SMITH shoes sneaker sports'
+),
+(
+    '2', 
+    'Adidas VS PACE 2.0', 
+    8499, 
+    4999, 
+    5, 
+    '749248264_VS-PACE-2.0-4999.jpeg', 
+    'This is Adidas VS PACE 2.0', 
+    'The Adidas VS PACE 2.0 shoes are a variant of the classic Adidas VS PACE silhouette, known for its versatile style and comfort. The VS PACE 2.0 designation likely refers to an updated version or model of the original VS PACE shoes. Adidas VS PACE shoes are designed for everyday wear and casual sports activities. They are characterized by their lightweight construction, cushioned sole, and modern design. Without specific details on the VS PACE 2.0 variation, it\'s difficult to provide a more detailed description. However, Adidas often releases new iterations of their popular shoe models with improved features or design elements.', 
+    0, 
+    'All new Adidas VS PACE 2.0 shoes', 
+    'new Adidas VS PACE 2.0 shoes', 
+    'Adidas VS PACE 2.0 shoes sneaker sports'
+)";
+
+mysqli_query($conn, $sql);
+
+
+// Puma Shoes Data
+$sql = "INSERT INTO `product` (
+    categories_id, 
+    name, 
+    mrp, 
+    price, 
+    qty, 
+    image, 
+    short_desc, 
+    description, 
+    best_seller, 
+    meta_title, 
+    meta_desc, 
+    meta_keyword
+) 
+VALUES 
+(
+    '3',
+    'PUMA Blktop Rider Preppy Unisex Sneakers', 
+    12499, 
+    8999, 
+    5, 
+    '744916767_PUMA Blktop Rider Preppy Unisex Sneakers 8999.jpg', 
+    'This is PUMA Blktop Rider Preppy Unisex Sneakers', 
+    'The PUMA Blktop Rider Preppy Unisex Sneakers are a stylish and versatile choice for both men and women. These sneakers feature a classic design with a modern twist, making them perfect for casual wear or dressing up an outfit. The unisex design ensures they can be worn by anyone, regardless of gender. With their comfortable fit and durable construction, these sneakers are sure to become a wardrobe staple. Whether you're running errands or heading out for a night on the town, the PUMA Blktop Rider Preppy Unisex Sneakers are the perfect choice.', 
+    0,  
+    'All new PUMA Blktop Rider Preppy Unisex Sneakers', 
+    'new PUMA Blktop Rider Preppy Unisex Sneakers', 
+    'PUMA Blktop Rider Preppy Unisex Sneakers shoes sneaker sports casual unisex'
+),
+(
+    '3',
+    'PUMA BMW M Motorsport Caven 2', 
+    10499, 
+    6999, 
+    5, 
+    '791257919_PUMA BMW-M-Motorsport-Caven-2 6999.jpg', 
+    'This is PUMA BMW M Motorsport Caven 2', 
+    'The PUMA BMW M Motorsport Caven 2 shoes combine motorsport-inspired design with casual street style. These sneakers feature a sleek and sporty look, perfect for fans of BMW and motorsport enthusiasts alike. The Caven 2 designation likely refers to a specific model or version of the PUMA BMW M Motorsport shoes. With their comfortable fit and durable construction, these sneakers are suitable for everyday wear. Whether you're hitting the track or exploring the city, the PUMA BMW M Motorsport Caven 2 shoes are sure to turn heads.', 
+    0,  
+    'All new PUMA BMW M Motorsport Caven 2 shoes', 
+    'new PUMA BMW M Motorsport Caven 2 shoes', 
+    'PUMA BMW M Motorsport Caven 2 shoes motorsport sneakers casual'
+),
+(
+    '3',
+    'PUMA Court Shatter Low Men\'s Sneakers', 
+    7499, 
+    4199, 
+    5, 
+    '598411239_PUMA Court Shatter Low Men's Sneakers 4199.jpg', 
+    'This is PUMA Court Shatter Low Men\'s Sneakers', 
+    'The PUMA Court Shatter Low Men\'s Sneakers are designed for both style and performance on the court. With a low-profile design and durable construction, these sneakers provide stability and support during intense gameplay. The Court Shatter Low designation likely refers to the design elements and technology used in the construction of these shoes. With their sleek look and comfortable fit, these sneakers are also suitable for casual wear off the court. Whether you're playing basketball or simply hanging out with friends, the PUMA Court Shatter Low Men\'s Sneakers are a versatile choice for any occasion.', 
+    0,  
+    'All new PUMA Court Shatter Low Men\'s Sneakers', 
+    'new PUMA Court Shatter Low Men\'s Sneakers', 
+    'PUMA Court Shatter Low Men\'s Sneakers shoes sneaker sports casual men'
+)
+
+
+
+
+
+";
+
+
 // Users Table
 $sql = "CREATE TABLE IF NOT EXISTS `users` (
     id INT AUTO_INCREMENT PRIMARY KEY,
