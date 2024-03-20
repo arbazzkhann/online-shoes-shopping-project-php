@@ -369,14 +369,15 @@ VALUES
     7499, 
     4199, 
     5, 
-    '598411239_PUMA Court Shatter Low Men's Sneakers 4199.jpg', 
+    '169684507_PUMA Court Shatter Low Mens Sneakers-4199.jpg', 
     'This is PUMA Court Shatter Low Men\'s Sneakers', 
     'The PUMA Court Shatter Low Men\'s Sneakers are designed for both style and performance on the court. With a low-profile design and durable construction, these sneakers provide stability and support during intense gameplay. The Court Shatter Low designation likely refers to the design elements and technology used in the construction of these shoes. With their sleek look and comfortable fit, these sneakers are also suitable for casual wear off the court. Whether you're playing basketball or simply hanging out with friends, the PUMA Court Shatter Low Men\'s Sneakers are a versatile choice for any occasion.', 
     0,  
     'All new PUMA Court Shatter Low Men\'s Sneakers', 
     'new PUMA Court Shatter Low Men\'s Sneakers', 
     'PUMA Court Shatter Low Men\'s Sneakers shoes sneaker sports casual men'
-)
+),
+
 
 
 
