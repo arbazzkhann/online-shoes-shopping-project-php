@@ -340,10 +340,10 @@ VALUES
     'PUMA Blktop Rider Preppy Unisex Sneakers', 
     12499, 
     8999, 
-    5, 
+    3, 
     '744916767_PUMA Blktop Rider Preppy Unisex Sneakers 8999.jpg', 
     'This is PUMA Blktop Rider Preppy Unisex Sneakers', 
-    'The PUMA Blktop Rider Preppy Unisex Sneakers are a stylish and versatile choice for both men and women. These sneakers feature a classic design with a modern twist, making them perfect for casual wear or dressing up an outfit. The unisex design ensures they can be worn by anyone, regardless of gender. With their comfortable fit and durable construction, these sneakers are sure to become a wardrobe staple. Whether you're running errands or heading out for a night on the town, the PUMA Blktop Rider Preppy Unisex Sneakers are the perfect choice.', 
+    'The PUMA Blktop Rider Preppy Unisex Sneakers are a stylish and versatile choice for both men and women. These sneakers feature a classic design with a modern twist, making them perfect for casual wear or dressing up an outfit. The unisex design ensures they can be worn by anyone, regardless of gender. With their comfortable fit and durable construction, these sneakers are sure to become a wardrobe staple. Whether you\'re running errands or heading out for a night on the town, the PUMA Blktop Rider Preppy Unisex Sneakers are the perfect choice.', 
     0,  
     'All new PUMA Blktop Rider Preppy Unisex Sneakers', 
     'new PUMA Blktop Rider Preppy Unisex Sneakers', 
@@ -354,10 +354,10 @@ VALUES
     'PUMA BMW M Motorsport Caven 2', 
     10499, 
     6999, 
-    5, 
+    9, 
     '791257919_PUMA BMW-M-Motorsport-Caven-2 6999.jpg', 
     'This is PUMA BMW M Motorsport Caven 2', 
-    'The PUMA BMW M Motorsport Caven 2 shoes combine motorsport-inspired design with casual street style. These sneakers feature a sleek and sporty look, perfect for fans of BMW and motorsport enthusiasts alike. The Caven 2 designation likely refers to a specific model or version of the PUMA BMW M Motorsport shoes. With their comfortable fit and durable construction, these sneakers are suitable for everyday wear. Whether you're hitting the track or exploring the city, the PUMA BMW M Motorsport Caven 2 shoes are sure to turn heads.', 
+    'The PUMA BMW M Motorsport Caven 2 shoes combine motorsport-inspired design with casual street style. These sneakers feature a sleek and sporty look, perfect for fans of BMW and motorsport enthusiasts alike. The Caven 2 designation likely refers to a specific model or version of the PUMA BMW M Motorsport shoes. With their comfortable fit and durable construction, these sneakers are suitable for everyday wear. Whether you\'re hitting the track or exploring the city, the PUMA BMW M Motorsport Caven 2 shoes are sure to turn heads.', 
     0,  
     'All new PUMA BMW M Motorsport Caven 2 shoes', 
     'new PUMA BMW M Motorsport Caven 2 shoes', 
@@ -368,22 +368,31 @@ VALUES
     'PUMA Court Shatter Low Men\'s Sneakers', 
     7499, 
     4199, 
-    5, 
+    4, 
     '169684507_PUMA Court Shatter Low Mens Sneakers-4199.jpg', 
     'This is PUMA Court Shatter Low Men\'s Sneakers', 
-    'The PUMA Court Shatter Low Men\'s Sneakers are designed for both style and performance on the court. With a low-profile design and durable construction, these sneakers provide stability and support during intense gameplay. The Court Shatter Low designation likely refers to the design elements and technology used in the construction of these shoes. With their sleek look and comfortable fit, these sneakers are also suitable for casual wear off the court. Whether you're playing basketball or simply hanging out with friends, the PUMA Court Shatter Low Men\'s Sneakers are a versatile choice for any occasion.', 
+    'The PUMA Court Shatter Low Men\'s Sneakers are designed for both style and performance on the court. With a low-profile design and durable construction, these sneakers provide stability and support during intense gameplay. The Court Shatter Low designation likely refers to the design elements and technology used in the construction of these shoes. With their sleek look and comfortable fit, these sneakers are also suitable for casual wear off the court. Whether you\'re playing basketball or simply hanging out with friends, the PUMA Court Shatter Low Men\'s Sneakers are a versatile choice for any occasion.', 
     0,  
     'All new PUMA Court Shatter Low Men\'s Sneakers', 
     'new PUMA Court Shatter Low Men\'s Sneakers', 
     'PUMA Court Shatter Low Men\'s Sneakers shoes sneaker sports casual men'
 ),
+(
+    '3',
+    'PUMA Palermo Unisex Sneakers', 
+    8949, 
+    6999, 
+    8, 
+    '579063336_PUMA Palermo Unisex Sneakers 6999.jpg', 
+    'This is PUMA Palermo Unisex Sneakers', 
+    'The PUMA Palermo Unisex Sneakers offer a versatile and stylish option for both men and women. With a classic design and comfortable fit, these sneakers are suitable for everyday wear. Whether you\'re running errands or hanging out with friends, the Palermo Unisex Sneakers are a great choice. The unisex design ensures they can be worn by anyone, regardless of gender. With their durable construction and timeless aesthetic, these sneakers are sure to become a wardrobe staple.', 
+    0,  
+    'All new PUMA Palermo Unisex Sneakers', 
+    'new PUMA Palermo Unisex Sneakers', 
+    'PUMA Palermo Unisex Sneakers shoes sneaker sports casual unisex'
+)";
 
-
-
-
-
-
-";
+mysqli_query($conn, $sql);
 
 
 // Users Table
