@@ -4,14 +4,15 @@
     $result = mysqli_query($conn, $sql);
 
     if(isset($_GET['type']) && $_GET['type'] != '') {
+        $type = $_GET['type']; // Assigning the value from $_GET['type'] to $type variable
         if($type == 'delete') {
             $id = get_safe_value($conn, $_GET['id']);
             
-            $sql_delete = "delete from contact_us where id='$id'";
+            $sql_delete = "DELETE FROM contact_us WHERE id='$id'";
             mysqli_query($conn, $sql_delete);
         }
     }
-
+    
     $sql = "SELECT * FROM contact_us ORDER BY id DESC";
     $result = mysqli_query($conn, $sql);
 ?>
@@ -53,7 +54,8 @@
                                             <td><?php echo $row['added_on']?></td>
                                             <td>
                                                 <?php
-                                                    echo "<span class='badge badge-delete'><a href='?type=delete&id=".$row['id']."'>Delete</a></span>&nbsp"; //delete category button
+                                                    // echo "<span class='badge badge-delete'><a href='?type=delete&id=".$row['id']."'>Delete</a></span>&nbsp"; //delete user comment button
+                                                    echo "<span class='badge badge-delete'><a href='?type=delete&id=".$row['id']."'>Delete</a></span>&nbsp";
                                                 ?>
                                             </td>
                                         </tr>
