@@ -158,19 +158,19 @@ if(isset($_POST['submit'])) {
                                 <select  class="form-control" name="best_seller" required>
                                     <option value="">Select</option>
                                     <?php
-                                        if($best_seller == 1) {
-                                            echo    '<option value="1" selected>Yes</option>
-                                                    <option value="0">No</option>';
-                                        } elseif($best_seller == 0) {
-                                            echo    '<option value="1">Yes</option>
-                                                    <option value="0" selected>No</option>';
-                                        } else {
-                                            echo    '<option value="1">Yes</option>
-                                                    <option value="0">No</option>';
+                                        if($best_seller == 0) {
+                                            echo '<option value="1">Yes</option>
+                                                  <option value="0" selected>No</option>';
+                                        }
+                                        else if($best_seller == 1) {
+                                            echo '<option value="1" selected>Yes</option>
+                                                  <option value="0">No</option>';
+                                        } 
+                                        else {
+                                            echo '<option value="1">Yes</option>
+                                            <option value="0">No</option>';
                                         }
                                     ?>
-                                    
-                                    <option value="0">No</option>
                                 </select>
                         </div>
 
