@@ -268,7 +268,7 @@
                                         &nbsp; &nbsp; COD <input type="radio" name="payment_type" value="COD" required />
                                         <!-- &nbsp; &nbsp; PayU <input type="radio" name="payment_type" value="payu" required /> -->
                                     </div>
-                                    <input type="submit" name="submit" />
+                                    <input class="fv-btn" type="submit" name="submit" />
                                 </div>
                             </div>
                         </form>
