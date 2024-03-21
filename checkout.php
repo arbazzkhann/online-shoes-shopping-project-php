@@ -266,7 +266,7 @@
                                 <div class="paymentinfo">
                                     <div class="single-method">
                                         &nbsp; &nbsp; COD <input type="radio" name="payment_type" value="COD" required />
-                                        &nbsp; &nbsp; PayU <input type="radio" name="payment_type" value="payu" required />
+                                        <!-- &nbsp; &nbsp; PayU <input type="radio" name="payment_type" value="payu" required /> -->
                                     </div>
                                     <input type="submit" name="submit" />
                                 </div>
