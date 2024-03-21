@@ -395,6 +395,82 @@ VALUES
 mysqli_query($conn, $sql);
 
 
+// Campus Shoes Data
+$sql = "INSERT INTO `product` (
+    categories_id, 
+    name, 
+    mrp, 
+    price, 
+    qty, 
+    image, 
+    short_desc, 
+    description, 
+    best_seller, 
+    meta_title, 
+    meta_desc, 
+    meta_keyword
+) 
+VALUES 
+(
+    '4',
+    'FLASH White Men\\'s Sneakers', 
+    2199, 
+    1329, 
+    6, 
+    '328786609_FLASH White Mens Sneakers 1329.jpg', 
+    'This is FLASH White Men\\'s Sneakers', 
+    'The FLASH White Men\\'s Sneakers offer a stylish and comfortable option for men. With their classic white color and versatile design, these sneakers are perfect for everyday wear. Whether you\\'re heading to work or going out with friends, the FLASH White Men\\'s Sneakers are sure to complement any outfit. With their durable construction and cushioned sole, these sneakers provide both style and support.', 
+    0,  
+    'All new FLASH White Men\\'s Sneakers', 
+    'new FLASH White Men\\'s Sneakers', 
+    'FLASH White Men\\'s Sneakers shoes sneaker sports casual men'
+),
+(
+    '4',
+    'CAMP DENVER White Mens Sneakers', 
+    2599, 
+    1419, 
+    4, 
+    '893046584_CAMP DENVER White Mens Sneakers 1419.jpg', 
+    'This is CAMP DENVER White Mens Sneakers', 
+    'The CAMP DENVER White Mens Sneakers offer a stylish and comfortable option for men. With their classic white color and versatile design, these sneakers are perfect for everyday wear. Whether you\\'re heading to work or going out with friends, the CAMP DENVER White Mens Sneakers are sure to complement any outfit. With their durable construction and cushioned sole, these sneakers provide both style and support.', 
+    0,  
+    'All new CAMP DENVER White Mens Sneakers', 
+    'new CAMP DENVER White Mens Sneakers', 
+    'CAMP DENVER White Mens Sneakers shoes sneaker sports casual men'
+),
+(
+    '4',
+    'OG-04 White Men Sneakers', 
+    2299, 
+    1309, 
+    5, 
+    '568145594_OG-04 White Men Sneakers 1309.jpg', 
+    'This is OG-04 White Men Sneakers', 
+    'The OG-04 White Men Sneakers offer a stylish and comfortable option for men. With their classic white color and versatile design, these sneakers are perfect for everyday wear. Whether you\\'re heading to work or going out with friends, the OG-04 White Men Sneakers are sure to complement any outfit. With their durable construction and cushioned sole, these sneakers provide both style and support.', 
+    0,  
+    'All new OG-04 White Men Sneakers', 
+    'new OG-04 White Men Sneakers', 
+    'OG-04 White Men Sneakers shoes sneaker sports casual men'
+),
+(
+    '4',
+    'OG-11 White Men Sneakers', 
+    2249, 
+    1347, 
+    9, 
+    '504864804_OG-11 White Men Sneakers 1347.jpg', 
+    'This is OG-11 White Men Sneakers', 
+    'The OG-11 White Men Sneakers offer a stylish and comfortable option for men. With their classic white color and versatile design, these sneakers are perfect for everyday wear. Whether you\\'re heading to work or going out with friends, the OG-11 White Men Sneakers are sure to complement any outfit. With their durable construction and cushioned sole, these sneakers provide both style and support.', 
+    0,  
+    'All new OG-11 White Men Sneakers', 
+    'new OG-11 White Men Sneakers', 
+    'OG-11 White Men Sneakers shoes sneaker sports casual men'
+)";
+
+mysqli_query($conn, $sql);
+
+
 // Users Table
 $sql = "CREATE TABLE IF NOT EXISTS `users` (
     id INT AUTO_INCREMENT PRIMARY KEY,
