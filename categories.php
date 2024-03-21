@@ -12,19 +12,19 @@
         $sort = $_GET['sort']; // sort type from GET Request
         switch ($sort) {    // Switch Case
             case 'new':
-                $sort_order = " ORDER BY product.id DESC";
+                $sort_order = " ORDER BY product.id ASC";
                 $new = "selected";
                 break;
             case 'price_high':
-                $sort_order = " ORDER BY product.price ASC";
+                $sort_order = " ORDER BY product.price DESC";
                 $price_high = "selected";
                 break;
             case 'price_low':
-                $sort_order = " ORDER BY product.price DESC";
+                $sort_order = " ORDER BY product.price ASC";
                 $price_low = "selected";
                 break;
             case 'old':
-                $sort_order = " ORDER BY product.id ASC";
+                $sort_order = " ORDER BY product.id DESC";
                 $old = "selected";
                 break;
             default:
