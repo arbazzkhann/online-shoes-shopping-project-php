@@ -178,7 +178,7 @@ VALUES
     '281368162_Nike Air Force 1 7495.png', 
     'Nike Air Force Shoes', 
     'The Nike Air Force 1 Shoes are a variant of the classic Nike Air Force silhouette, known for its iconic design and versatile style. They are characterized by their supportive fit, cushioned sole, and timeless aesthetic.', 
-    1, 
+    0, 
     'New Nike Air Force Shoes', 
     'New Nike Air Force shoes. Perfect for any occasion.', 
     'nike air force sneakers'
@@ -192,7 +192,7 @@ VALUES
     '733014853_Nike Air Jordan 1 Low 8995.png', 
     'Nike Air Jordan 1 Low Shoes', 
     'The Nike Air Jordan 1 Low Shoes are a variant of the classic Air Jordan 1 silhouette, known for its iconic design and versatile style. They are characterized by their supportive fit, cushioned sole, and timeless aesthetic.', 
-    1, 
+    0, 
     'Nike Air Jordan 1 Low Shoes', 
     'Nike Air Jordan 1 Low shoes. Perfect for any occasion.', 
     'Nike Air Jordan 1 Low one sneakers'
@@ -206,7 +206,7 @@ VALUES
     '495226829_Nike Air Jordan 1 Mid 11495.jpeg', 
     'Nike Air Jordan 1 Mid Shoes', 
     'The Nike Air Jordan 1 Mid Shoes are a variant of the classic Air Jordan 1 silhouette, known for its iconic design and versatile style. They are characterized by their supportive fit, cushioned sole, and timeless aesthetic.', 
-    1, 
+    0, 
     'new Nike Air Jordan 1 Mid Shoes', 
     'Nike Air Jordan 1 Mid shoes. Perfect for any occasion.', 
     'Nike Air Jordan 1 Mid one sneakers'
@@ -296,7 +296,7 @@ VALUES
     '185325951_STAN-SMITH-SHOES-8999.jpeg', 
     'This is Adidas STAN SMITH SHOES', 
     'The Adidas STAN SMITH SHOES are a variant of the classic Adidas Stan Smith silhouette, known for its iconic design and versatile style. The STAN SMITH designation likely refers to an oversized or exaggerated feature of the shoe, though without further context it\'s unclear exactly what aspect of the shoe is being emphasized. Adidas Stan Smith shoes have been a staple in sneaker culture since their introduction in the 1960s, originally designed as tennis shoes but later gaining popularity as casual streetwear. They are characterized by their clean, minimalist design, leather upper, and timeless aesthetic. Without specific details on the STAN SMITH variation, it\'s difficult to provide a more detailed description. However, Adidas often releases special editions or collaborations within their Stan Smith line, which may feature unique colorways, materials, or design elements.', 
-    0, 
+    1, 
     'All new Adidas STAN SMITH shoes', 
     'new Adidas STAN SMITH shoes', 
     'Adidas STAN SMITH shoes sneaker sports'
@@ -386,7 +386,7 @@ VALUES
     '579063336_PUMA Palermo Unisex Sneakers 6999.jpg', 
     'This is PUMA Palermo Unisex Sneakers', 
     'The PUMA Palermo Unisex Sneakers offer a versatile and stylish option for both men and women. With a classic design and comfortable fit, these sneakers are suitable for everyday wear. Whether you\'re running errands or hanging out with friends, the Palermo Unisex Sneakers are a great choice. The unisex design ensures they can be worn by anyone, regardless of gender. With their durable construction and timeless aesthetic, these sneakers are sure to become a wardrobe staple.', 
-    0,  
+    1,  
     'All new PUMA Palermo Unisex Sneakers', 
     'new PUMA Palermo Unisex Sneakers', 
     'PUMA Palermo Unisex Sneakers shoes sneaker sports casual unisex'
@@ -448,7 +448,7 @@ VALUES
     '568145594_OG-04 White Men Sneakers 1309.jpg', 
     'This is OG-04 White Men Sneakers', 
     'The OG-04 White Men Sneakers offer a stylish and comfortable option for men. With their classic white color and versatile design, these sneakers are perfect for everyday wear. Whether you\\'re heading to work or going out with friends, the OG-04 White Men Sneakers are sure to complement any outfit. With their durable construction and cushioned sole, these sneakers provide both style and support.', 
-    0,  
+    1,  
     'All new OG-04 White Men Sneakers', 
     'new OG-04 White Men Sneakers', 
     'OG-04 White Men Sneakers shoes sneaker sports casual men'
@@ -485,7 +485,7 @@ mysqli_query($conn, $sql);
 
 // Inserting into users Table
 $sql = "INSERT INTO `users` (name, password, email, mobile) VALUES 
-        ('user, user, user@gmail.com, 9900123456')";
+        ('user', 'user', 'user@gmail.com', '9900123456')";
 
 mysqli_query($conn, $sql);
 
