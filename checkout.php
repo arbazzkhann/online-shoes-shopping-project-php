@@ -43,7 +43,6 @@
         //fetching order id from database
         $order_id = mysqli_insert_id($conn);
 
-
         foreach($_SESSION['cart'] as $key => $val) {    
             $productArr = get_product($conn, '', '', $key);
             $price = $productArr[0]['price'];
@@ -57,69 +56,47 @@
         // unsetting cart items
         unset($_SESSION['cart']);
 
-        // if Payment Method is payU 
-        if($payment_type == 'payu') {
+        //if Payment Method is instamojo 
+        if($payment_type == 'instamojo') {
         
-            $MERCHANT_KEY = "gtKFFx"; 
-            $SALT = "eCwWELxi";
-            $hash_string = '';
-            //$PAYU_BASE_URL = "https://secure.payu.in";
-            $PAYU_BASE_URL = "https://test.payu.in";
-            $action = '';
-            $posted = array();
-            if(!empty($_POST)) {
-            foreach($_POST as $key => $value) {    
-                $posted[$key] = $value; 
-            }
-            }
-
             // Finding user detils with user id
             $sql = "SELECT * FROM `users` WHERE id = '$user_id'";
             $result = mysqli_query($conn, $sql);
             $userArr = mysqli_fetch_assoc($result);
-            
-            $formError = 0;
-            $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
-            $posted['txnid'] = $txnid;
-            $posted['amount'] = $total_price;
-            $posted['firstname'] = $userArr['name'];
-            $posted['email'] = $userArr['email'];
-            $posted['phone'] = $userArr['mobile'];
-            $posted['productinfo'] = "productinfo";
-            $posted['key']=$MERCHANT_KEY ;
-            $hash = '';
-            $hashSequence = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10";
-            if(empty($posted['hash']) && sizeof($posted) > 0) {
-            if(
-                    empty($posted['key'])
-                    || empty($posted['txnid'])
-                    || empty($posted['amount'])
-                    || empty($posted['firstname'])
-                    || empty($posted['email'])
-                    || empty($posted['phone'])
-                    || empty($posted['productinfo'])
-                    
-            ) {
-                $formError = 1;
-            } else {    
-                $hashVarsSeq = explode('|', $hashSequence);
-                foreach($hashVarsSeq as $hash_var) {
-                $hash_string .= isset($posted[$hash_var]) ? $posted[$hash_var] : '';
-                $hash_string .= '|';
-                }
-                $hash_string .= $SALT;
-                $hash = strtolower(hash('sha512', $hash_string));
-                $action = $PAYU_BASE_URL . '/_payment';
-            }
-            } elseif(!empty($posted['hash'])) {
-            $hash = $posted['hash'];
-            $action = $PAYU_BASE_URL . '/_payment';
-            }
-        
-        
-            $formHtml ='<form method="post" name="payuForm" id="payuForm" action="'.$action.'"><input type="hidden" name="key" value="'.$MERCHANT_KEY.'" /><input type="hidden" name="hash" value="'.$hash.'"/><input type="hidden" name="txnid" value="'.$posted['txnid'].'" /><input name="amount" type="hidden" value="'.$posted['amount'].'" /><input type="hidden" name="firstname" id="firstname" value="'.$posted['firstname'].'" /><input type="hidden" name="email" id="email" value="'.$posted['email'].'" /><input type="hidden" name="phone" value="'.$posted['phone'].'" /><textarea name="productinfo" style="display:none;">'.$posted['productinfo'].'</textarea><input type="hidden" name="surl" value=http://localhost/online-shoes-shopping-project-php/payment_complete.php" /><input type="hidden" name="furl" value="http://localhost/online-shoes-shopping-project-php/payment_fail.php"/><input type="submit" style="display:none;"/></form>';
-            echo $formHtml;
-            echo '<script>document.getElementById("payuForm").submit();</script>';
+
+            $ch = curl_init();
+		
+            curl_setopt($ch, CURLOPT_URL, 'https://api.instamojo.com/v2/payment_requests/');
+            curl_setopt($ch, CURLOPT_HEADER, FALSE);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+            // curl_setopt($ch, CURLOPT_HTTPHEADER,array('Authorization: Bearer y70kak2K0Rg7J4PAL8sdW0MutnGJEl'));
+            curl_setopt($ch, CURLOPT_HTTPHEADER,array("X-Api-Key:test_b5c1f10d1a5caf52895db93e6e9","X-Auth-Token:test_c3bad4119bf94ba7de76c0da657"));
+
+            $payload = Array(
+                'purpose' => 'Buy Product',
+                'amount' => $total_price,
+                'phone' => $userArr['mobile'],
+                'buyer_name' => $userArr['name'],
+                'redirect_url' => 'http://localhost/online-shoes-shopping-project-php/payment_complete.php',
+                'send_email' => false,
+                'send_sms' => false,
+                'email' => $userArr['email'],
+                'allow_repeated_payments' => false
+            );
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
+            $response = curl_exec($ch);
+            curl_close($ch);
+
+            $response=json_decode($response);
+            $_SESSION['TID']=$response->payment_request->id;
+                mysqli_query($conn, "UPDATE `order` SET txnid='".$response->payment_request->id."' where id='".$order_id."'");
+            ?>
+            <script>
+                window.location.href='<?php echo $response->payment_request->longurl?>';
+            </script>
+            <?php   
         }
         else { 
             ?>
@@ -266,7 +243,7 @@
                                 <div class="paymentinfo">
                                     <div class="single-method">
                                         &nbsp; &nbsp; COD <input type="radio" name="payment_type" value="COD" required />
-                                        <!-- &nbsp; &nbsp; PayU <input type="radio" name="payment_type" value="payu" required /> -->
+                                        <!-- &nbsp; &nbsp; Instamojo <input type="radio" name="payment_type" value="instamojo" required /> -->
                                     </div>
                                     <input class="fv-btn" type="submit" name="submit" />
                                 </div>
