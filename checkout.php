@@ -243,7 +243,7 @@
                                 <div class="paymentinfo">
                                     <div class="single-method">
                                         &nbsp; &nbsp; COD <input type="radio" name="payment_type" value="COD" required />
-                                        <!-- &nbsp; &nbsp; Instamojo <input type="radio" name="payment_type" value="instamojo" required /> -->
+                                        &nbsp; &nbsp; Instamojo <input type="radio" name="payment_type" value="instamojo" required />
                                     </div>
                                     <input class="fv-btn" type="submit" name="submit" />
                                 </div>
