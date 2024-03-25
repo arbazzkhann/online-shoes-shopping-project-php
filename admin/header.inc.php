@@ -75,7 +75,7 @@
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false"><?php echo $_SESSION['ADMIN_USERNAME']?></a>
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i>Logout</a>
+                            <a class="nav-link" href="../logout.php"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
                 </div>
