@@ -6,7 +6,7 @@
                 Copyright &copy; <?php echo date('Y')?>
             </div>
             <div class="col-sm-6 text-right">
-                Designed by <a href="https://colorlib.com/">Arbaz Khan</a>
+                Designed by <a href="https://github.com/arbazzkhann/" target="_blank">Arbaz Khan</a>
             </div>
         </div>
     </div>
