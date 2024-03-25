@@ -4,31 +4,39 @@
 
 	$msg = '';
 
-    if(isset($_POST['submit'])) {
-        $username = get_safe_value($conn, $_POST['username']);
-        $password = get_safe_value($conn, $_POST['password']);
 
-        $sql = "SELECT * FROM admin_users WHERE username = '$username' AND password = '$password'";
-        $result = mysqli_query($conn, $sql);
-
-        $count = mysqli_num_rows($result);
-        if($count > 0) {
-            session_start();
-            $_SESSION['ADMIN_LOGIN'] = 'yes';
-            $_SESSION['ADMIN_USERNAME'] = $username;
-            header('location: ../categories.php');
-            die();
-
-        } else {
-            $msg = "Please enter correct login details.";
-        }
-    }
+	
+	if(isset($_POST['submit'])) {
+		$username = get_safe_value($conn, $_POST['username']);
+		$password = get_safe_value($conn, $_POST['password']);
+	
+		$sql = "SELECT * FROM admin_users WHERE username = '$username' AND password = '$password'";
+		$result = mysqli_query($conn, $sql);
+	
+		$count = mysqli_num_rows($result);
+		if($count > 0) {
+			session_start();
+			$_SESSION['ADMIN_LOGIN'] = true; // Set to boolean true
+			$_SESSION['ADMIN_USERNAME'] = $username;
+			header('location: ../categories.php');
+			die();
+		} else {
+			$msg = "Please enter correct login details.";
+		}
+	}
+	
+	session_start();
+	if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN'] == true && isset($_SESSION['ADMIN_USERNAME']) && $_SESSION['ADMIN_USERNAME'] != '') {
+		header('location: ../categories.php');
+		die();
+	}
+	
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V1</title>
+	<title>Admin Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -77,6 +85,8 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
+
+					<div class="field_error"><?php echo $msg?></div>
 					
 					<div class="container-login100-form-btn">
 						<button name="submit" class="login100-form-btn">
@@ -98,9 +108,10 @@
 							
 						</a>
 					</div>
+					
 				</form>
 			</div>
-			<div class="field_error"><?php echo $msg?></div>
+			
 		</div>
 	</div>
 	
