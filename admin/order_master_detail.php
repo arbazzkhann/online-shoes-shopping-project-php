@@ -33,11 +33,9 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        //userid from session array
-                                        $uid = $_SESSION['USER_ID'];  
-                                        
+                                       
                                         //sql form selecting user order by user id
-                                        $sql = "SELECT DISTINCT(order_details.id), order_details.*, product.name, product.image, `order`.address, `order`.city, `order`.pincode FROM `order_details`, `product`, `order` WHERE order_details.order_id = '$order_id' AND `order`.user_id = '$uid' AND order_details.product_id = product.id";  
+                                        $sql = "select distinct(order_details.id) ,order_details.*,product.name,product.image,`order`.address,`order`.city,`order`.pincode from order_details,product ,`order` where order_details.order_id='$order_id' and  order_details.product_id=product.id GROUP by order_details.id";  
                                         $result = mysqli_query($conn, $sql);
 
                                         $total_price = 0;
