@@ -460,3 +460,7 @@ iframe {
     opacity: 1;
   }
 }
+
+.field_error {
+  color: red;
+}
